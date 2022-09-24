@@ -1,0 +1,30 @@
+controller:
+  args:
+    appResyncPeriod: 30
+
+server:
+  service:
+    type: NodePort
+    nodePortHttp: 30000
+  additionalApplications:
+    - name: applications
+      namespace: argocd
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+      project: default
+      source:
+        path: app-of-apps
+        repoURL: https://github.com/how-to-devops/gitops
+        targetRevision: main
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
+configs:
+  repositories:
+    github:
+      url: https://github.com/how-to-devops/gitops
+  secret:
+    argocdServerAdminPassword: $2a$12$rmt5/gAmHlrmH9LokPewXu02zEYoawUSlsVwI9VbK7ZDqVY48o4sm # argocd

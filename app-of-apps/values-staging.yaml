@@ -1,0 +1,14 @@
+global:
+  env: staging
+  valuesFile: values-staging.yaml
+  spec:
+    destination:
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/how-to-devops/gitops
+      targetRevision: main
+
+argocdApplications:
+  counter-backend:
+    name: counter-backend
+    namespace: backend
