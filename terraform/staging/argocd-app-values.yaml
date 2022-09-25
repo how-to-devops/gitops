@@ -1,0 +1,18 @@
+applications:
+  - name: applications
+    namespace: argocd
+    project: default
+    destination:
+      server: https://kubernetes.default.svc
+    project: default
+    source:
+      path: app-of-apps
+      repoURL: https://github.com/how-to-devops/gitops
+      targetRevision: main
+      helm:
+        valueFiles:
+          - values-staging.yaml
+    syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true

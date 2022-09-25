@@ -38,7 +38,7 @@ resource "kind_cluster" "staging" {
   }
 }
 
-resource "helm_release" "argocd_staging" {
+resource "helm_release" "argocd" {
   depends_on = [
     kind_cluster.staging
   ]
@@ -53,5 +53,22 @@ resource "helm_release" "argocd_staging" {
 
   values = [
     "${file("argocd-values.yaml")}"
+  ]
+}
+
+resource "helm_release" "argocd_apps" {
+  depends_on = [
+    helm_release.argocd
+  ]
+
+  name       = "argocd-apps"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argocd-apps"
+  version    = "0.0.1"
+  
+  namespace = "argocd"
+
+  values = [
+    "${file("argocd-app-values.yaml")}"
   ]
 }

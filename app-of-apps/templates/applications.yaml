@@ -12,7 +12,7 @@ spec:
     path: apps/{{ .name }}/{{ $.Values.global.env }}
     helm:
       valueFiles:
-      - {{ $.Values.global.valuesFile }}
+      - values.yaml
   destination:
     namespace: {{ .namespace }}
     server: {{ $.Values.global.spec.destination.server }}

@@ -6,21 +6,6 @@ server:
   service:
     type: NodePort
     nodePortHttp: 30000
-  additionalApplications:
-    - name: applications
-      namespace: argocd
-      project: default
-      destination:
-        server: https://kubernetes.default.svc
-      project: default
-      source:
-        path: app-of-apps
-        repoURL: https://github.com/how-to-devops/gitops
-        targetRevision: main
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
 
 configs:
   repositories:

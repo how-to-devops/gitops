@@ -1,9 +1,9 @@
 apiVersion: v2
 name: counter-backend
-version: 0.1.0-ee7f53f927ab38f1a6c97371207d02fb214516e3
+version: 0.1.0+79cd8b657284c3fe67df71b5d0b4caf94b2af872
 
 dependencies:
   - name: counter-backend
-    version: 0.1.0-ee7f53f927ab38f1a6c97371207d02fb214516e3
-    repository: "oci://ghcr.io/how-to-devops/charts"
+    version: 0.1.0+79cd8b657284c3fe67df71b5d0b4caf94b2af872
+    repository: "https://howtodevops.jfrog.io/artifactory/api/helm/charts"
 

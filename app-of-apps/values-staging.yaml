@@ -1,6 +1,5 @@
 global:
   env: staging
-  valuesFile: values-staging.yaml
   spec:
     destination:
       server: https://kubernetes.default.svc
